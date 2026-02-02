@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nima Khaloozadeh - Portfolio</title>
+    <link rel="icon" type="image/png" href="redblackchess.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8B0000; /* Dark red instead of blue */
+            --secondary-color: #8B0000; /* Dark red instead of purple */
+            --accent-color: #8B0000; /* Dark red instead of cyan */
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --white: #f5f5dc; /* Khaki */
+            --gradient-primary: linear-gradient(135deg, #8B0000 0%, #8B0000 100%); /* Dark red gradient */
+            --gradient-secondary: linear-gradient(135deg, #8B0000 0%, #8B0000 100%); /* Dark red gradient */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gold: #c2b280;
+        }
+
+        body {
+            font-family: 'Inter', 'UnifrakturCook', cursive, sans-serif;
+            line-height: 1.6;
+            color: #222; /* Typewriter black for all text by default */
+            background: #8B0000; /* Dark red background for outer area */
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.85); /* subtle overlay for readability */
+            border: 8px solid #c2b280; /* gold/brown scroll edge */
+            border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 8px #c2b280 inset;
+            overflow: hidden;
+            position: relative;
+            padding: 8px; /* Add padding to create the khaki inner area */
+        }
+
+        .page-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #f5f5dc 0%, #e8e8d0 100%); /* Parchment-like gradient */
+            border-radius: 12px;
+            z-index: 0;
+        }
+
+        /* Add scroll-like texture overlay */
+        .page-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 1;
+            background: #f5f5dc; /* Khaki background for content */
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            max-width: 1500px;
+            min-width: 0;
+            z-index: 1000;
+            border: none;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            overflow-x: visible;
+            overflow-y: visible;
+            background: none;
+        }
+        nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: #f5f5dc;
+            border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 8px #c2b280 inset;
+            transform: scaleY(-1);
+            pointer-events: none;
+        }
+        nav > .nav-container,
+        nav > .logo-bg-nk {
+            position: relative;
+            z-index: 1;
+        }
+        nav::-webkit-scrollbar,
+        .nav-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            min-width: 0;
+            overflow-x: visible;
+            flex-wrap: wrap;
+            padding: 1rem 2rem;
+            gap: 2rem;
+        }
+
+        .logo-bg-nk {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+            font-family: 'UnifrakturCook', cursive, 'Inter', sans-serif;
+            font-size: 6rem;
+            color: #c2b280;
+            font-weight: 700;
+            opacity: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            white-space: nowrap;
+            flex: 1 1 auto;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8B0000 !important; /* Keep nav bar text dark red */
+            font-weight: 500;
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'UnifrakturCook', cursive, 'Inter', sans-serif;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8B0000; /* Dark red instead of gradient */
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 1rem;
+            flex: 0 0 auto;
+        }
+
+        .nav-social a {
+            color: #8B0000 !important; /* Keep nav bar social icons dark red */
+            transition: all 0.3s ease;
+        }
+
+        .nav-social a i {
+            font-size: 2.2rem;
+        }
+
+        .nav-social a:hover {
+            transform: translateY(-3px);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5dc 0%, #e8e8d0 100%); /* Khaki gradient */
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Add padding for fixed navigation */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #1e293b; /* Dark text for khaki background */
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            color: #222; /* Typewriter black for hero name */
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s both;
+            color: #222;
+        }
+
+        .hero-content .title {
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-weight: 600;
+            animation: fadeInUp 1s ease 0.4s both;
+            color: #222;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #222; /* Typewriter black background */
+            color: #f5f5dc; /* Khaki text */
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            background: #111;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: #222;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #222;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--white);
+        }
+
+        /* Published Games Section */
+        .published-games {
+            background: #f0f0d8; /* Lighter khaki */
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .game-card {
+            background: var(--white); /* Now khaki */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain3" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain3)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .game-image i {
+            font-size: 4rem;
+            color: #f5f5dc; /* Khaki color for visibility on dark red background */
+            z-index: 2;
+            position: relative;
+        }
+
+        .game-content {
+            padding: 2rem;
+        }
+
+        .game-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+            font-weight: 700;
+        }
+
+        .game-content p {
+            margin-bottom: 1.5rem;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .game-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-tag {
+            padding: 0.25rem 0.75rem;
+            background: #e8e8d0; /* Lighter khaki for tags */
+            color: var(--text-secondary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .game-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .game-links a {
+            padding: 0.75rem 1.5rem;
+            background: #8B0000; /* Dark red instead of gradient */
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .game-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        /* .projects-grid .project-card:last-child {
+            grid-column: 1 / -1;
+            justify-self: center;
+        } */
+
+        /* Full Project Carousel */
+        .full-project-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .full-project-slides {
+            display: flex;
+            width: 300%; /* 3 slides for Game Jam Games */
+            transition: transform 0.3s ease;
+        }
+
+        .full-project-slide {
+            width: 33.333%;
+            flex-shrink: 0;
+        }
+
+        /* Special styling for the bachelor's studies project (6 slides) */
+        .project-card:nth-child(4) .full-project-slides {
+            width: 600%; /* 6 slides */
+        }
+
+        .project-card:nth-child(4) .full-project-slide {
+            width: 16.666%;
+        }
+
+        .full-project-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(139, 0, 0, 0.7);
+            color: #f5f5dc;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: auto;
+            user-select: none;
+            margin-top: 150px;
+        }
+
+        .full-project-nav:hover {
+            background: rgba(139, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .full-project-nav.prev {
+            left: 5px;
+        }
+
+        .full-project-nav.next {
+            right: 5px;
+        }
+
+        .full-project-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .full-project-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: rgba(139, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            user-select: none;
+        }
+
+        .full-project-dot.active {
+            background: #8B0000;
+            transform: scale(1.2);
+        }
+
+        .project-card {
+            background: var(--white); /* Now khaki */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .project-slides {
+            display: flex;
+            width: 300%; /* 3 slides */
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .project-slide {
+            width: 33.333%;
+            height: 100%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain4" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain4)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .project-image i {
+            font-size: 3rem;
+            color: #f5f5dc; /* Khaki color for visibility on dark red background */
+            z-index: 2;
+            position: relative;
+        }
+
+        .project-slide-content {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+            color: #f5f5dc;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .project-slide-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #f5f5dc;
+        }
+
+        .project-slide-content p {
+            color: #f5f5dc;
+            opacity: 0.9;
+        }
+
+        .project-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 3;
+        }
+
+        .project-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: rgba(245, 245, 220, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            user-select: none;
+        }
+
+        .project-dot.active {
+            background: #f5f5dc;
+            transform: scale(1.2);
+        }
+
+        .project-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(245, 245, 220, 0.7);
+            color: #8B0000;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            z-index: 3;
+            pointer-events: auto;
+            user-select: none;
+        }
+
+        .project-nav:hover {
+            background: rgba(245, 245, 220, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .project-nav.prev {
+            left: 5px;
+        }
+
+        .project-nav.next {
+            right: 5px;
+        }
+
+        .project-content {
+            padding: 1.5rem 3.0rem 2.5rem 3.0rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1rem;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            padding: 0.5rem 1rem;
+            background: #e8e8d0; /* Lighter khaki for project links */
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-links a .fab.fa-itch-io {
+            font-size: 1.5rem;
+        }
+
+        .project-links a .fas.fa-play {
+            font-size: 1.3rem;
+        }
+
+        .project-links a:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f0f0d8; /* Lighter khaki */
+            padding-bottom: 3.5rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #222;
+            font-weight: 700;
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #222;
+            margin-right: 0.5rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: var(--white); /* Now khaki */
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 2.5px solid #222; /* Typewriter black border */
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #222; /* Typewriter black border */
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white); /* Now khaki */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #222; /* Typewriter black border on focus */
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.1);
+        }
+
+        .submit-btn {
+            background: #222; /* Typewriter black */
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: #111;
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5dc; /* Khaki background for footer */
+            color: #222; /* Typewriter black for footer text */
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+
+        .social-links {
+            margin-bottom: 0; /* Removed bottom margin to match top spacing */
+        }
+
+        .social-links a {
+            color: #222;
+            font-size: 1.5rem;
+            margin: 0 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #111;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .nav-links a {
+                font-size: 1.7rem;
+            }
+            .logo-bg-nk {
+                font-size: 6rem !important;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+            
+            .nav-social {
+                display: none !important;
+            }
+            nav {
+                border-radius: 0;
+            }
+        }
+
+        body.dark-mode {
+            --primary-color: #f5f5dc;
+            --secondary-color: #f5f5dc;
+            --accent-color: #f5f5dc;
+            --white: #8B0000;
+            --gradient-primary: linear-gradient(135deg, #f5f5dc 0%, #f5f5dc 100%);
+            --gradient-secondary: linear-gradient(135deg, #f5f5dc 0%, #f5f5dc 100%);
+            background: var(--gold);
+            color: var(--gold);
+        }
+        body.dark-mode .page-wrapper,
+        body.dark-mode .page-content,
+        body.dark-mode .skills,
+        body.dark-mode .projects,
+        body.dark-mode .published-games,
+        body.dark-mode .contact,
+        body.dark-mode footer {
+            background: #000000 !important;
+            color: #f5f5dc !important;
+        }
+        body.dark-mode .project-card,
+        body.dark-mode .skill-card,
+        body.dark-mode .contact-form {
+            background: #8B0000 !important;
+            color: #f5f5dc !important;
+            border-color: #8B0000 !important;
+            box-shadow: none !important;
+        }
+        body.dark-mode .project-dot {
+            background: rgba(139, 0, 0, 0.5);
+        }
+        body.dark-mode .project-dot.active {
+            background: #8B0000;
+        }
+        body.dark-mode .full-project-dot {
+            background: rgba(245, 245, 220, 0.5);
+        }
+        body.dark-mode .full-project-dot.active {
+            background: #f5f5dc;
+        }
+        body.dark-mode .nav-links a,
+        body.dark-mode .nav-social a,
+        body.dark-mode #darkModeToggle {
+            color: #f5f5dc !important;
+        }
+        body.dark-mode .cta-button,
+        body.dark-mode .submit-btn {
+            background: var(--gold);
+            color: #8B0000;
+        }
+        body.dark-mode .cta-button:hover,
+        body.dark-mode .submit-btn:hover {
+            background: #d4d4b0;
+            color: #8B0000;
+        }
+        body.dark-mode .game-links a,
+        body.dark-mode .project-links a {
+            background: var(--gold);
+            color: #8B0000;
+        }
+        body.dark-mode .game-links a:hover,
+        body.dark-mode .project-links a:hover {
+            background: #c2c2a0;
+            color: #8B0000;
+        }
+        body.dark-mode .game-tag {
+            background: #c2b280;
+            color: #8B0000;
+        }
+        body.dark-mode .logo-bg-nk {
+            color: #8B0000 !important;
+            opacity: 1 !important;
+        }
+        body.dark-mode nav::before {
+            background: #000000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 8px #8B0000 inset;
+        }
+        body.dark-mode .page-wrapper {
+            border: 8px solid #8B0000 !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 8px #8B0000 inset;
+        }
+        body.dark-mode .page-wrapper::before {
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+        }
+        body.dark-mode .page-wrapper::after {
+            background-image: none;
+        }
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+        }
+        body.dark-mode .game-image,
+        body.dark-mode .project-image {
+            background: var(--gradient-primary);
+        }
+        body.dark-mode .project-slide-content,
+        body.dark-mode .project-content,
+        body.dark-mode .game-content {
+            color: #f5f5dc !important;
+            background: #8B0000 !important;
+        }
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #000000;
+            color: #f5f5dc;
+            border-color: #8B0000;
+        }
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            border-color: #8B0000;
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.3);
+        }
+        body.dark-mode .section-title,
+        body.dark-mode .section-subtitle {
+            color: #f5f5dc !important;
+        }
+        body.dark-mode .contact-item i,
+        body.dark-mode .social-links a {
+            color: #f5f5dc !important;
+        }
+        body.dark-mode .social-links a:hover {
+            color: #c2b280 !important;
+        }
+        body.dark-mode .nav-links a::after {
+            background: #f5f5dc;
+        }
+        body.dark-mode .nav-links a:hover::after {
+            background: #f5f5dc;
+        }
+        body.dark-mode .project-nav {
+            background: rgba(139, 0, 0, 0.7);
+            color: #f5f5dc;
+        }
+        body.dark-mode .project-nav:hover {
+            background: rgba(139, 0, 0, 0.9);
+        }
+        body.dark-mode .full-project-nav {
+            background: rgba(245, 245, 220, 0.7);
+            color: #8B0000 !important;
+        }
+        body.dark-mode .full-project-nav:hover {
+            background: rgba(245, 245, 220, 0.9);
+            color: #8B0000 !important;
+        }
+        body.dark-mode .game-image {
+            background: var(--gradient-primary);
+        }
+        body.dark-mode .project-image {
+            background: var(--gradient-secondary);
+        }
+        /* Force all other text to gold in dark mode (except nav bar and specific elements) */
+        body.dark-mode * {
+            color: var(--gold) !important;
+            border-color: var(--gold) !important;
+        }
+        /* Override specific elements that should not be gold */
+        body.dark-mode nav,
+        body.dark-mode .nav-links a,
+        body.dark-mode .nav-social a,
+        body.dark-mode #darkModeToggle,
+        body.dark-mode .skill-card i,
+        body.dark-mode .nav-social a i,
+        body.dark-mode #darkModeToggle i,
+        body.dark-mode .skill-card h3 {
+            color: #f5f5dc !important;
+        }
+        /* Override button text to be dark red */
+        body.dark-mode .cta-button,
+        body.dark-mode .submit-btn,
+        body.dark-mode .project-links a,
+        body.dark-mode .game-links a {
+            color: #8B0000 !important;
+        }
+        body.dark-mode .logo-bg-nk {
+            color: #8B0000 !important;
+            opacity: 1 !important;
+        }
+        body.dark-mode .page-content {
+            border-color: #8B0000 !important;
+        }
+        body.dark-mode .game-card {
+            border-color: #8B0000 !important;
+            box-shadow: none !important;
+        }
+        body.dark-mode .contact-info p,
+        body.dark-mode .contact-item span,
+        body.dark-mode .contact-item i {
+            color: var(--gold) !important;
+        }
+        /* Ensure intro button text is dark red */
+        body.dark-mode .hero .cta-button {
+            color: #8B0000 !important;
+        }
+        /* Ensure itch.io icons are dark red in dark mode */
+        body.dark-mode .project-links a i,
+        body.dark-mode .game-links a i {
+            color: #8B0000 !important;
+        }
+        /* Ensure project image icons are dark red in dark mode */
+        body.dark-mode .project-image i,
+        body.dark-mode .game-image i {
+            color: #8B0000 !important;
+        }
+        body.dark-mode .nav-social div {
+            background-color: #f5f5dc !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="page-content">
+            <!-- Navigation -->
+            <nav>
+                <div class="nav-container" style="position: relative; z-index: 1;">
+                    <div class="logo-bg-nk" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); z-index: 0; font-family: 'UnifrakturCook', cursive, 'Inter', sans-serif; font-size: 6rem; color: #c2b280; font-weight: 700; opacity: 0.85; pointer-events: none; user-select: none;">NK</div>
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-left: auto; position: relative; width: 100%; min-height: 60px;">
+                        <ul class="nav-links" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0;">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                        <div class="nav-social" style="display: flex; align-items: center; gap: 1rem; position: absolute; right: 0; top: 50%; transform: translateY(-50%);">
+                            <button id="darkModeToggle" aria-label="Toggle dark mode" style="background: none; border: none; cursor: pointer; font-size: 2.1rem; color: #8B0000; display: flex; align-items: center; justify-content: center; margin-right: -0.5rem;">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                            <div style="width: 1px; height: 2rem; background-color: #8B0000; margin-left: 0.1rem;"></div>
+                            <a href="https://www.linkedin.com/in/nima-khaloozadeh/" target="_blank" style="margin-top: 0.15rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/NimaKhh" target="_blank" style="margin-top: 0.15rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-content" style="margin-top: -60px;">
+                    <h1 style="margin-top: 3.5rem;">NIMA KHALOOZADEH</h1>
+                    <p class="subtitle">Game Programmer • Software Developer</p>
+                    <div style="display: flex; align-items: flex-start; gap: 0.7rem;">
+                        <img src="redblackchess.png" alt="Chessboard" style="width: 75px; height: 75px; object-fit: cover; margin-top: 4.7rem; margin-right: 0.5rem; margin-left: 0.5rem; animation: fadeInUp 1s ease 0.3s both;">
+                        <p style="text-align: left; max-width: 1000px; margin: 4.2rem 0 1.5rem 0; font-size: 1.35rem; animation: fadeInUp 1s ease 0.3s both;">My true passion is creating immersive and innovative games that push the boundaries of what’s possible. While I love game development and design, I thrive on programming, mathematics, software development, and the deeper challenges of computer science, using these skills to build unique, high-performance experiences that captivate audiences and redefine engagement in the industry.</p>
+                    </div>
+                    <a href="#contact" class="cta-button" style="margin-top: 1.2rem; display: inline-block;">Let's Collaborate!</a>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="projects">
+                <div class="container">
+                    <h2 class="section-title">Game and Simulation Projects</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-carousel">
+                                <div class="project-slides">
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/sim1.png" alt="DirectX 12 Simulation" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/sim2.png" alt="DirectX 12 Simulation" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/sim3.png" alt="DirectX 12 Simulation" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/sim4.png" alt="DirectX 12 Simulation" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/sim5.png" alt="DirectX 12 Simulation" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="project-nav prev">‹</button>
+                                <button class="project-nav next">›</button>
+                                <div class="project-dots">
+                                    <span class="project-dot active"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3><span style="float: right; margin-right: 0;">(2025)</span>DirectX 12 Distributed 3D Physics Simulation</h3>
+                                <p>This project contains simulations that showcase collision responses between planes, spheres, and capsules in various scenarios, utilizing parallel architecture to enhance performance and WinSock to implement a peer-to-peer distributed system.<br><br>I developed this simulation using C++ and DirectX 12 as the final project for my Simulation and Concurrency course during the second trimester of my master’s studies.</p>
+                                <div class="project-links">
+                                    <a href="https://nima-kh.itch.io/directx12-net-sim?secret=D8jtB6MWrylVMGXDbTgT2Gnac" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-carousel">
+                                <div class="project-slides">
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat1.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat2.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat3.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat4.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat5.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat6.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/plat7.png" alt="DirectX 11 Platformer" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="project-nav prev">‹</button>
+                                <button class="project-nav next">›</button>
+                                <div class="project-dots">
+                                    <span class="project-dot active"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3><span style="float: right; margin-right: 0;">(2024)</span>DirectX 11 2.5D Platformer</h3>
+                                <p>This project features a custom object loader, scene setup through configuration file parsing, and custom HLSL shaders. It includes both per-pixel and per-vertex shading to compare visual quality and performance. The only external libraries used were DirectXMath and IMGUI.<br><br>I developed this game using C++ and DirectX 11 as the final project for my C++ Programming and Design, and Real-Time Graphics courses during the first trimester of my master’s studies.</p>
+                                <div class="project-links">
+                                    <a href="https://nima-kh.itch.io/directx11-platformer?secret=C6GTv9nbdW7c6mIyFQcaYR1xpk" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-carousel">
+                                <div class="project-slides">
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/croquet1.png" alt="VR Croquet Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/croquet2.png" alt="VR Croquet Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/croquet3.png" alt="VR Croquet Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/croquet4.png" alt="VR Croquet Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                    <div class="project-slide">
+                                        <div class="project-image">
+                                            <img src="ProjectScreenshots/croquet5.png" alt="VR Croquet Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="project-nav prev">‹</button>
+                                <button class="project-nav next">›</button>
+                                <div class="project-dots">
+                                    <span class="project-dot active"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                    <span class="project-dot"></span>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3><span style="float: right; margin-right: 0;">(2024-2025)</span>Multiplayer VR Croquet Game</h3>
+                                <p>This is a VR croquet game, playable by up to 8 players online, developed using the Unity XRI template for VR and Unity Cloud for networking. Azure DevOps was used for agile project management and GitHub for version control.<br><br>As part of a four-member team, I worked on this game as Scrum Master, Project Manager, and Unity/C# Developer for my Commercial Development Practice course during the first two trimesters of my master’s studies.<br></p>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="full-project-carousel">
+                                <div class="full-project-slides">
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                            <div class="project-slides">
+                                                <div class="project-slide">
+                                                    <div class="project-image">
+                                                        <img src="ProjectScreenshots/bsc.png" alt="Bachelor's Degree Projects" style="width: 100%; height: 100%; object-fit: cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3>Game Projects from My Bachelor's Degree</h3>
+                                            <p>Collection of games developed as final projects during my bachelor's studies, showcasing the growth of skills from programming fundamentals to advanced AI, low-level assembly, and thesis-level game development.
+                                                Built using C++, Python, Unity, and x86 Assembly, these projects demonstrate practical application of diverse technologies across real, playable games, each highlighting course-specific learning and development focus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                            <div class="project-slides">
+                                                <div class="project-slide">
+                                                    <div class="project-image">
+                                                        <img src="ProjectScreenshots/jetpack.png" alt="Jetpack Joyride Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2018)</span>Jetpack Joyride Project</h3>
+                                            <p>I developed this game using C++ as the final project of my Fundamentals of Programming course during the first semester of my bachelor's studies.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/jetpack?secret=Bu5Q0kKu2fCZGxftWIaLUX8Q" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry1.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry2.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry3.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry4.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry5.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry6.png" alt="Angry Birds Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2019)</span>Angry Birds Project</h3>
+                                            <p>I developed this game using Unity as the final project of my Advanced Programming course during the second semester of my bachelor's studies.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/angry-birds-project" target="_blank"><i class="fas fa-play"></i> Play on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/othello1.png" alt="Othello Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/othello2.png" alt="Othello Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2020)</span>Othello Project</h3>
+                                            <p>I developed this game using Python as the final project for my Artificial Intelligence and Expert Systems course during the fifth semester of my bachelor's studies.<br><br>It can be played against an AI which uses machine learning techniques such as linear regression and minimax trees to predict the best moves.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/othello-project?secret=K0ISAnNSOsPXoNmFgSF4XWSA" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/tetris1.png" alt="TETRIS 8086 Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/tetris2.png" alt="TETRIS 8086 Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/tetris3.png" alt="TETRIS 8086 Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2021)</span>TETRIS 8086 Project</h3>
+                                            <p>I developed this game using x86 Assembly and DosBox as the final project for my Microprocessors and Assembly Language course during the sixth semester of my bachelor's studies.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/tetris-8086-project?secret=ZsiYPxQ6qIKvtcMcQ5dkSsRVmA" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle1.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle2.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle3.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle4.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle5.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle6.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle7.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/puxxle8.png" alt="PUXXLE! 2D Jigsaw Puzzle Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2023)</span>PUXXLE! (2D Jigsaw Puzzle Game)</h3>
+                                            <p>I developed this game using Unity as my bachelor’s thesis project during my final semester. It features an innovative algorithm that connects squares to form each piece, ensuring piece size requirements are met while efficiently managing leftover squares so that all squares are utilized.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/puxxle?secret=Rq0J917V2dLJ3RSymcjE9eROFfU" target="_blank"><i class="fab fa-itch-io"></i> View on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/angry2.png" alt="Angry Birds Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2019)</span>Angry Birds Game</h3>
+                                            <p>Final year capstone project that represents the culmination of all skills and knowledge acquired throughout the computer science degree program.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/angry-birds-project" target="_blank"><i class="fas fa-play"></i> Play on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="full-project-nav prev">‹</button>
+                                <button class="full-project-nav next">›</button>
+                                <div class="full-project-dots">
+                                    <span class="full-project-dot active"></span>
+                                    <span class="full-project-dot"></span>
+                                    <span class="full-project-dot"></span>
+                                    <span class="full-project-dot"></span>
+                                    <span class="full-project-dot"></span>
+                                    <span class="full-project-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="full-project-carousel">
+                                <div class="full-project-slides">
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                            <div class="project-slides">
+                                                <div class="project-slide">
+                                                    <div class="project-image">
+                                                        <img src="ProjectScreenshots/gamejams.png" alt="Game Jam Games" style="width: 100%; height: 100%; object-fit: cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3>Game Jam Games</h3>
+                                            <p>Collection of games created during various game jams, showcasing rapid prototyping skills and creative problem-solving under time constraints.</p>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/bubble1.png" alt="Bubble Up! Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/bubble2.png" alt="Bubble Up! Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/bubble3.png" alt="Bubble Up! Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/bubble4.png" alt="Bubble Up! Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/bubble5.png" alt="Bubble Up! Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2025)</span>Bubble Up!</h3>
+                                            <p>I developed this game using Unity in one day for the bubble-themed Global Game Jam 2025.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/bubble-up" target="_blank"><i class="fas fa-play"></i> Play on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="full-project-slide">
+                                        <div class="project-carousel">
+                                                                                            <div class="project-slides">
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/entropy1.png" alt="Entropy Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/entropy2.png" alt="Entropy Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/entropy3.png" alt="Entropy Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="project-slide">
+                                                        <div class="project-image">
+                                                            <img src="ProjectScreenshots/entropy4.png" alt="Entropy Game" style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <button class="project-nav prev">‹</button>
+                                            <button class="project-nav next">›</button>
+                                            <div class="project-dots">
+                                                <span class="project-dot active"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                                <span class="project-dot"></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-content">
+                                            <h3><span style="float: right; margin-right: 0;">(2025)</span>Entropy Game</h3>
+                                            <p>I developed this game using Unity for the Climax Game Jam 2025, where we had 48 hours to create something based on the theme 'Entropy.'<br><br>This game features the first boss fight I've ever made.</p>
+                                            <div class="project-links">
+                                                <a href="https://nima-kh.itch.io/entropy-game" target="_blank"><i class="fas fa-play"></i> Play on itch.io</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="full-project-nav prev">‹</button>
+                                <button class="full-project-nav next">›</button>
+                                <div class="full-project-dots">
+                                    <span class="full-project-dot active"></span>
+                                    <span class="full-project-dot"></span>
+                                    <span class="full-project-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="skills">
+                <div class="container">
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Education</h3>
+                            <p>
+                                • B.Sc. in Computer Engineering<br>
+                                • Ongoing Graduate degree in Computer Science for Games Programming
+                            </p>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-cubes"></i>
+                            <h3>Game & Software Tools</h3>
+                            <p>
+                                DirectX 11 and 12, Unity (3D, VR, and Multiplayer game development), Azure DevOps and Jira, Angular, SQL
+                            </p>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-code"></i>
+                            <h3>Programming Languages</h3>
+                            <p>
+                                C++, C#, Java, Python, C, VHDL, Assembly
+                            </p>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Team & Development</h3>
+                            <p>
+                                Team Leadership, Agile Software Development, Scrum Master
+                            </p>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-tools"></i>
+                            <h3>Engineering Tools</h3>
+                            <p>
+                                MATLAB, Xilinx ISE, Cisco Packet Tracer, Wireshark, Proteus, Quartus, ModelSim
+                            </p>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Electronics, Digital Design & Embedded Controllers</h3>
+                            <p>
+                                • x86 CPU, Microprocessors, FPGA<br>
+                                • ARM, Xilinx Spartan 3
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact">
+                <div class="container">
+                    <h2 class="section-title">Let's Collaborate!</h2>
+                    <p class="section-subtitle">Feel free to reach out to me via email or connect with me on LinkedIn.<br>I look forward to hearing from you!</p>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <!-- Other contact info can go here if needed -->
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; margin-top: -1rem;">
+                        <div class="contact-item" style="justify-content: center; margin-bottom: 1.2rem;">
+                            <i class="fas fa-envelope"></i>
+                            <span>n.khaloozadeh2-2023@hull.ac.uk</span>
+                        </div>
+                        <div class="social-links" style="margin-bottom:1rem; display: flex; justify-content: center;">
+                            <a href="https://www.linkedin.com/in/nima-khaloozadeh/" target="_blank"><i class="fab fa-linkedin" style="font-size:2.0rem;"></i></a>
+                            <a href="https://github.com/NimaKhh" target="_blank"><i class="fab fa-github" style="font-size:2.0rem;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling (only if form exists)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+            });
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            // Navigation stays khaki - no color change on scroll
+        });
+
+        // Project carousel functionality
+        class ProjectCarousel {
+            constructor(carousel) {
+                this.carousel = carousel;
+                this.slides = carousel.querySelector('.project-slides');
+                this.dots = carousel.querySelectorAll('.project-dot');
+                this.prevBtn = carousel.querySelector('.project-nav.prev');
+                this.nextBtn = carousel.querySelector('.project-nav.next');
+                this.currentSlide = 0;
+                this.totalSlides = this.dots.length;
+                
+                // Debug logging
+                console.log('Carousel initialized:', {
+                    slides: this.slides,
+                    dots: this.dots.length,
+                    prevBtn: this.prevBtn,
+                    nextBtn: this.nextBtn
+                });
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Prev button clicked');
+                        this.prevSlide();
+                    });
+                }
+                
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Next button clicked');
+                        this.nextSlide();
+                    });
+                }
+                
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Dot clicked:', index);
+                        this.goToSlide(index);
+                    });
+                });
+                
+                // Touch/swipe support
+                let startX = 0;
+                let endX = 0;
+                
+                this.carousel.addEventListener('touchstart', (e) => {
+                    e.stopPropagation();
+                    startX = e.touches[0].clientX;
+                });
+                
+                this.carousel.addEventListener('touchend', (e) => {
+                    e.stopPropagation();
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe(startX, endX);
+                });
+                
+                // Mouse drag support
+                let isDragging = false;
+                let startPos = 0;
+                
+                this.carousel.addEventListener('mousedown', (e) => {
+                    e.stopPropagation();
+                    isDragging = true;
+                    startPos = e.clientX;
+                });
+                
+                this.carousel.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+                
+                this.carousel.addEventListener('mouseup', (e) => {
+                    e.stopPropagation();
+                    if (isDragging) {
+                        const endPos = e.clientX;
+                        const diff = startPos - endPos;
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                this.nextSlide();
+                            } else {
+                                this.prevSlide();
+                            }
+                        }
+                        isDragging = false;
+                    }
+                });
+                
+                this.carousel.addEventListener('mouseleave', (e) => {
+                    e.stopPropagation();
+                    isDragging = false;
+                });
+
+                // Mouse wheel (horizontal scroll) support
+                let wheelTimeout = null;
+                this.carousel.addEventListener('wheel', (e) => {
+                    if (wheelTimeout) return;
+                    // Always handle and preventDefault for image carousels
+                    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (e.deltaX > 0) {
+                            this.nextSlide();
+                        } else if (e.deltaX < 0) {
+                            this.prevSlide();
+                        }
+                        wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 200);
+                    }
+                }, { passive: false });
+            }
+            
+            handleSwipe(startX, endX) {
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+            
+            prevSlide() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.updateCarousel();
+            }
+            
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateCarousel();
+            }
+            
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.updateCarousel();
+            }
+            
+            updateCarousel() {
+                const translateX = -(this.currentSlide * 33.333);
+                console.log('Updating carousel:', {
+                    currentSlide: this.currentSlide,
+                    translateX: translateX
+                });
+                
+                if (this.slides) {
+                    this.slides.style.transform = `translateX(${translateX}%)`;
+                }
+                
+                // Update dots
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+        }
+        
+        // Full Project Carousel functionality
+        class FullProjectCarousel {
+            constructor(carousel) {
+                this.carousel = carousel;
+                this.slides = carousel.querySelector('.full-project-slides');
+                this.dots = carousel.querySelectorAll('.full-project-dot');
+                this.prevBtn = carousel.querySelector('.full-project-nav.prev');
+                this.nextBtn = carousel.querySelector('.full-project-nav.next');
+                this.currentSlide = 0;
+                this.totalSlides = this.dots.length;
+                
+                // Initialize inner carousels
+                this.innerCarousels = carousel.querySelectorAll('.project-carousel');
+                this.innerCarousels.forEach(innerCarousel => {
+                    new ProjectCarousel(innerCarousel);
+                });
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.prevSlide();
+                    });
+                }
+                
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.nextSlide();
+                    });
+                }
+                
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.goToSlide(index);
+                    });
+                });
+                
+                // Touch/swipe support
+                let startX = 0;
+                let endX = 0;
+                
+                this.carousel.addEventListener('touchstart', (e) => {
+                    // Only start if not on an image carousel
+                    if (!e.target.closest('.project-carousel')) {
+                        startX = e.touches[0].clientX;
+                    } else {
+                        startX = null;
+                    }
+                });
+                
+                this.carousel.addEventListener('touchend', (e) => {
+                    if (startX !== null && !e.target.closest('.project-carousel')) {
+                        endX = e.changedTouches[0].clientX;
+                        this.handleSwipe(startX, endX);
+                    }
+                });
+                
+                // Mouse drag support
+                let isDragging = false;
+                let startPos = 0;
+                
+                this.carousel.addEventListener('mousedown', (e) => {
+                    if (!e.target.closest('.project-carousel')) {
+                        isDragging = true;
+                        startPos = e.clientX;
+                    } else {
+                        isDragging = false;
+                    }
+                });
+                
+                this.carousel.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+                
+                this.carousel.addEventListener('mouseup', (e) => {
+                    e.stopPropagation();
+                    if (isDragging) {
+                        const endPos = e.clientX;
+                        const diff = startPos - endPos;
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                this.nextSlide();
+                            } else {
+                                this.prevSlide();
+                            }
+                        }
+                        isDragging = false;
+                    }
+                });
+                
+                this.carousel.addEventListener('mouseleave', (e) => {
+                    e.stopPropagation();
+                    isDragging = false;
+                });
+
+                // Mouse wheel (horizontal scroll) support
+                let wheelTimeout = null;
+                this.carousel.addEventListener('wheel', (e) => {
+                    if (wheelTimeout) return;
+                    // Only handle if the element under the mouse is NOT inside a .project-carousel
+                    const el = document.elementFromPoint(e.clientX, e.clientY);
+                    if (el && el.closest('.project-carousel')) return;
+                    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+                        e.preventDefault();
+                        if (e.deltaX > 0) {
+                            this.nextSlide();
+                        } else if (e.deltaX < 0) {
+                            this.prevSlide();
+                        }
+                        wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 200);
+                    }
+                }, { passive: false });
+            }
+            
+            handleSwipe(startX, endX) {
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+            
+            prevSlide() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.updateCarousel();
+            }
+            
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateCarousel();
+            }
+            
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.updateCarousel();
+            }
+            
+            updateCarousel() {
+                // Determine slide width based on total slides
+                let slideWidth;
+                if (this.totalSlides === 3) {
+                    slideWidth = 33.333; // Game Jam Games
+                } else if (this.totalSlides === 6) {
+                    slideWidth = 16.666; // Last project
+                } else {
+                    slideWidth = 50; // Default fallback
+                }
+                
+                const translateX = -(this.currentSlide * slideWidth);
+                this.slides.style.transform = `translateX(${translateX}%)`;
+                
+                // Update dots
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+        }
+
+        // Initialize all project carousels
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.project-carousel');
+            console.log('Found carousels:', carousels.length);
+            
+            carousels.forEach((carousel, index) => {
+                console.log(`Initializing carousel ${index + 1}:`, carousel);
+                new ProjectCarousel(carousel);
+            });
+
+            // Initialize full project carousels
+            const fullCarousels = document.querySelectorAll('.full-project-carousel');
+            console.log('Found full carousels:', fullCarousels.length);
+            
+            fullCarousels.forEach((carousel, index) => {
+                console.log(`Initializing full carousel ${index + 1}:`, carousel);
+                new FullProjectCarousel(carousel);
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.project-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = darkModeToggle.querySelector('i');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+</html> 
